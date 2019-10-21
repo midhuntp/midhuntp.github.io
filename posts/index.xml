@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on My New Hugo Site</title>
+    <title>Posts on Musings</title>
     <link>https://midhuntp.github.io/posts/</link>
-    <description>Recent content in Posts on My New Hugo Site</description>
+    <description>Recent content in Posts on Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 21 Oct 2019 15:58:27 +0530</lastBuildDate>
@@ -13,11 +13,11 @@
     
     <item>
       <title>My First Post</title>
-      <link>https://midhuntp.github.io/posts/my-first-post/</link>
+      <link>https://midhuntp.github.io/posts/digging-deeper-into-files/</link>
       <pubDate>Mon, 21 Oct 2019 15:58:27 +0530</pubDate>
       
-      <guid>https://midhuntp.github.io/posts/my-first-post/</guid>
-      <description></description>
+      <guid>https://midhuntp.github.io/posts/digging-deeper-into-files/</guid>
+      <description>Digging deeper Content</description>
     </item>
     
   </channel>
