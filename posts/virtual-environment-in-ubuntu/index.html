@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Virtual Environment in Ubuntu - uNix Learner</title>
+    
+    <meta name="description" content="Setting up Virtual environment in ubuntu (Probably the best way) Ubuntu Linux 18.04 Comes with Python 3.6.6 by default. you can verify the same from terminal
+python3 -V Python 3.6.6 The package helper pip3 tool will not comes by default . You can install pip3 in the bash terminal using:
+sudo apt install python3-pip Install the tool using pip3:
+pip3 install virtualenvwrapper Then find the location of the python executables">
+    <meta name="author" content="">
+    
+    <link href="https://midhuntp.github.io/an-old-hope.min.css" rel="stylesheet">
+    <link href="https://midhuntp.github.io/style.css" rel="stylesheet">
+    
+    <link rel="apple-touch-icon" href="https://midhuntp.github.io/apple-touch-icon.png">
+    <link rel="icon" href="https://midhuntp.github.io/favicon.ico">
+    
+    <meta name="generator" content="Hugo 0.69.0" />
+    
+    <link rel="alternate" type="application/atom+xml" href="https://midhuntp.github.io/index.xml" title="uNix Learner">
+    
+    
+    
+    <script>
+      function setTheme() {
+        const time = new Date();
+
+        const prev = localStorage.getItem('date');
+        const date = String(time.getMonth() + 1) + '.' + String(time.getDate());
+
+        const now = time.getTime();
+        let sunrise;
+        let sunset;
+
+        function setBodyClass() {
+          if (now > sunrise && now < sunset) return;
+          document.body.classList.add('dark');
+        }
+
+        if (date !== prev) {
+          fetch('https://api.ipgeolocation.io/astronomy?apiKey=5ed37d85103e4defa5df4c5298ed5215')
+            .then(res => res.json())
+            .then(data => {
+              sunrise = data.sunrise.split(':').map(Number);
+              sunset = data.sunset.split(':').map(Number);
+            })
+            .catch(() => {
+              sunrise = [7, 0];
+              sunset = [19, 0];
+            })
+            .finally(() => {
+              sunrise = time.setHours(sunrise[0], sunrise[1], 0);
+              sunset = time.setHours(sunset[0], sunset[1], 0);
+              setBodyClass();
+              localStorage.setItem('sunrise', sunrise);
+              localStorage.setItem('sunset', sunset);
+            });
+          localStorage.setItem('date', date);
+        } else {
+          sunrise = Number(localStorage.getItem('sunrise'));
+          sunset = Number(localStorage.getItem('sunset'));
+          setBodyClass();
+        }
+      }
+    </script>
+  </head>
+  <body class="single">
+    <script>
+      setTheme();
+    </script>
+    <header class="header">
+      <nav class="nav">
+        
+        <p class="logo"><a href="https://midhuntp.github.io/">uNix Learner</a></p>
+        
+        
+      </nav>
+    </header>
+    <main class="main">
+
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">Virtual Environment in Ubuntu</h1>
+    <div class="post-meta">April 11, 2020</div>
+  </header>
+  <div class="post-content"><h2 id="setting-up-virtual-environment-in-ubuntu--probably-the-best-way">Setting up Virtual environment in ubuntu  (Probably the best way)</h2>
+<p>Ubuntu Linux 18.04 Comes with  <code>Python 3.6.6</code> by default. you can verify the same from terminal</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python3 -V
+ Python 3.6.6
+</code></pre></div><p>The package helper  <code>pip3</code> tool  will not comes by default . You can install pip3 in the bash terminal using:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt install python3-pip
+</code></pre></div><p>Install the tool using pip3:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> pip3 install virtualenvwrapper
+</code></pre></div><p>Then find the location of the python executables</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">which python3 
+    /usr/bin/python3  
+</code></pre></div><p>Then add the following lines to the end of your shell startup file
+(this is a hidden file name .bashrc in your home directory).
+These set the location where the virtual environments should live,
+the location of your development project directories, and the location of the script installed with this package:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">export WORKON_HOME<span style="color:#f92672">=</span>$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON<span style="color:#f92672">=</span>/usr/bin/python3
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#39; -p /usr/bin/python3 &#39;</span>
+source /usr/local/bin/virtualenvwrapper.sh
+</code></pre></div><p>Then reload the startup file by running the following command in the terminal:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">source ~/.bashrc
+</code></pre></div><p>At this point you should see a bunch of scripts being run as shown below:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">virtualenvwrapper.user_scripts creating /home/ubuntu/.virtualenvs/premkproject
+virtualenvwrapper.user_scripts creating /home/ubuntu/.virtualenvs/postmkproject
+...
+virtualenvwrapper.user_scripts creating /home/ubuntu/.virtualenvs/preactivate
+virtualenvwrapper.user_scripts creating /home/ubuntu/.virtualenvs/postactivate
+virtualenvwrapper.user_scripts creating /home/ubuntu/.virtualenvs/get_env_details
+</code></pre></div></div>
+  
+  
+  
+  
+  
+</article>
+
+</main>
+<footer class="footer">
+  <span>&copy; 2020 <a href="https://midhuntp.github.io/">uNix Learner</a></span>
+  <span>&middot;</span>
+  <span>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</span>
+  <span>&middot;</span>
+  <span>Theme️ <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper</a></span>
+</footer>
+<script src="https://midhuntp.github.io/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>
+
