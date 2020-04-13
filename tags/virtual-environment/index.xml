@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on uNix Learner</title>
-    <link>https://midhuntp.github.io/posts/</link>
-    <description>Recent content in Posts on uNix Learner</description>
+    <title>Virtual environment on uNix Learner</title>
+    <link>https://midhuntp.github.io/tags/virtual-environment/</link>
+    <description>Recent content in Virtual environment on uNix Learner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 11 Apr 2020 13:43:43 +0530</lastBuildDate>
     
-	<atom:link href="https://midhuntp.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://midhuntp.github.io/tags/virtual-environment/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

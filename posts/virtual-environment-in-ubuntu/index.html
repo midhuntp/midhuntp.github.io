@@ -8,10 +8,11 @@
     <title>Virtual Environment in Ubuntu - uNix Learner</title>
     
     <meta name="description" content="Setting up Virtual environment in ubuntu (Probably the best way) Setting up virtual environment using virtual-environment-wrapper
-Ubuntu Linux 18.04 Comes with Python 3 by default. you can verify the same from terminal
-python3 -V Python 3.6.6 The package helper pip3 tool will not comes by default . You can install pip3 in the bash terminal using:
-~:$ sudo apt install python3-pip Install the tool using pip3:
-~:$ pip3 install virtualenvwrapper Then find the location of the python executables">
+Pre-requisites :
+Python3 pip3 Install the &lsquo;virtualenvwrapper&rsquo; using pip3: pip url : https://pypi.org/project/virtualenvwrapper/
+~:$ pip3 install virtualenvwrapper Then find the location of the python executables
+~:$ which python3 /usr/bin/python3 Then add the following lines to &lsquo;.bashrc&rsquo; file These set the following locations
+ where the virtual environments should live, the location of the script installed by virtualenvwrapper  export WORKON_HOME=$HOME/.">
     <meta name="author" content="">
     
     <link href="https://midhuntp.github.io/an-old-hope.min.css" rel="stylesheet">
@@ -91,25 +92,28 @@ python3 -V Python 3.6.6 The package helper pip3 tool will not comes by default .
   </header>
   <div class="post-content"><h2 id="setting-up-virtual-environment-in-ubuntu--probably-the-best-way">Setting up Virtual environment in ubuntu  (Probably the best way)</h2>
 <p>Setting up virtual environment using virtual-environment-wrapper</p>
-<p>Ubuntu Linux 18.04 Comes with  <code>Python 3</code> by default. you can verify the same from terminal</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python3 -V
- Python 3.6.6
-</code></pre></div><p>The package helper  <code>pip3</code> tool  will not comes by default . You can install pip3 in the bash terminal using:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">~:$ sudo apt install python3-pip
-</code></pre></div><p>Install the tool using pip3:</p>
+<p>Pre-requisites :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Python3
+pip3
+</code></pre></div><p>Install the &lsquo;virtualenvwrapper&rsquo; using pip3:
+pip url : <a href="https://pypi.org/project/virtualenvwrapper/">https://pypi.org/project/virtualenvwrapper/</a></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">~:$ pip3 install virtualenvwrapper
 </code></pre></div><p>Then find the location of the python executables</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">which python3 
-    /usr/bin/python3  
-</code></pre></div><p>Then add the following lines to the end of your shell startup file
-(this is a hidden file name .bashrc in your home directory).
-These set the location where the virtual environments should live,
-the location of your development project directories, and the location of the script installed with this package:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">~:$ which python3 
+/usr/bin/python3  
+</code></pre></div><p>Then add the following lines to  &lsquo;.bashrc&rsquo; file
+These set the following  locations</p>
+<ul>
+<li>where the virtual environments should live,</li>
+<li>the location of the script installed by virtualenvwrapper</li>
+</ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">export WORKON_HOME<span style="color:#f92672">=</span>$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON<span style="color:#f92672">=</span>/usr/bin/python3
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#39; -p /usr/bin/python3 &#39;</span>
 source /usr/local/bin/virtualenvwrapper.sh
-</code></pre></div><p>Then reload the startup file by running the following command in the terminal:</p>
+</code></pre></div><p><code>/usr/bin/python3 </code> was selected form the output of the <code>which</code> command
+Select you python version to be used here, ie. if you want o use python 3.7 in th virtual environments select the executable path for python3.7</p>
+<p>Then reload the startup file depending on the shell you are using  by running the following command :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">~:$ source ~/.bashrc
 </code></pre></div><p>At this point you should see a bunch of scripts being run as shown below:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">virtualenvwrapper.user_scripts creating /home/ubuntu/.virtualenvs/premkproject
@@ -146,6 +150,24 @@ for that  select python executable from the following path</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># /home/{user}/.virtualenvs/{virtual env name}/bin/python3.6</span>
 /home/user/.virtualenvs/my_new_virtual_env/bin/python3.6
 </code></pre></div></div>
+  
+  <footer class="post-footer">
+    <ul class="post-tags">
+      
+      
+      <li><a href="https://midhuntp.github.io/tags/virtual-environment">Virtual environment</a></li>
+      
+      
+      <li><a href="https://midhuntp.github.io/tags/python3">python3</a></li>
+      
+      
+      <li><a href="https://midhuntp.github.io/tags/ubuntu-18.04">Ubuntu 18.04</a></li>
+      
+      
+      <li><a href="https://midhuntp.github.io/tags/virtualenvwrapper">virtualenvwrapper</a></li>
+      
+    </ul>
+  </footer>
   
   
   
