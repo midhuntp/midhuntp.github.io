@@ -1,55 +1,35 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://midhuntp.github.io/categories/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://midhuntp.github.io/posts/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://midhuntp.github.io/tags/python3/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://midhuntp.github.io/tags/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://midhuntp.github.io/tags/ubuntu-18.04/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://midhuntp.github.io/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://midhuntp.github.io/tags/virtual-environment/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://midhuntp.github.io/posts/virtual-environment-in-ubuntu/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://midhuntp.github.io/tags/virtualenvwrapper/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://midhuntp.github.io/categories/python/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
   </url>
-  
 </urlset>
