@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Ubuntu 18.04 on CloudBuff</title>
     <link>https://midhuntp.github.io/tags/ubuntu-18.04/</link>
@@ -13,12 +13,7 @@
       <pubDate>Sat, 11 Apr 2020 13:43:43 +0530</pubDate>
       
       <guid>https://midhuntp.github.io/posts/virtual-environment-in-ubuntu/</guid>
-      <description>Setting up Virtual environment in ubuntu (Probably the best way) Setting up virtual environment using virtual-environment-wrapper
-Pre-requisites :
-Python3 pip3 Install the &amp;lsquo;virtualenvwrapper&amp;rsquo; using pip3: pip url : https://pypi.org/project/virtualenvwrapper/
-~:$ pip3 install virtualenvwrapper Then find the location of the python executables
-~:$ which python3 /usr/bin/python3 Then add the following lines to &amp;lsquo;.bashrc&amp;rsquo; file These set the following locations
- where the virtual environments should live, the location of the script installed by virtualenvwrapper  export WORKON_HOME=$HOME/.</description>
+      <description>An insightful description for this page that Google will like</description>
     </item>
     
   </channel>
