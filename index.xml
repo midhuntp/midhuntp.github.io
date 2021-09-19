@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>CloudBuff</title>
+    <link>https://midhuntp.github.io/</link>
+    <description>Recent content on CloudBuff</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 04 Aug 2021 11:02:22 +0530</lastBuildDate><atom:link href="https://midhuntp.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Generating  and using self signed certificates</title>
+      <link>https://midhuntp.github.io/posts/devops/self-signed-ssl/</link>
+      <pubDate>Wed, 04 Aug 2021 11:02:22 +0530</pubDate>
+      
+      <guid>https://midhuntp.github.io/posts/devops/self-signed-ssl/</guid>
+      <description>Generating and using self signed certificates </description>
+    </item>
+    
+    <item>
+      <title>Virtual Environment in Ubuntu</title>
+      <link>https://midhuntp.github.io/posts/virtual-environment-in-ubuntu/</link>
+      <pubDate>Sat, 11 Apr 2020 13:43:43 +0530</pubDate>
+      
+      <guid>https://midhuntp.github.io/posts/virtual-environment-in-ubuntu/</guid>
+      <description>An insightful description for this page that Google will like</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on CloudBuff</title>
+    <link>https://midhuntp.github.io/tags/</link>
+    <description>Recent content in Tags on CloudBuff</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 11 Apr 2020 13:43:43 +0530</lastBuildDate><atom:link href="https://midhuntp.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>python3</title>
+      <link>https://midhuntp.github.io/tags/python3/</link>
+      <pubDate>Sat, 11 Apr 2020 13:43:43 +0530</pubDate>
+      
+      <guid>https://midhuntp.github.io/tags/python3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 18.04</title>
+      <link>https://midhuntp.github.io/tags/ubuntu-18.04/</link>
+      <pubDate>Sat, 11 Apr 2020 13:43:43 +0530</pubDate>
+      
+      <guid>https://midhuntp.github.io/tags/ubuntu-18.04/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Virtual environment</title>
+      <link>https://midhuntp.github.io/tags/virtual-environment/</link>
+      <pubDate>Sat, 11 Apr 2020 13:43:43 +0530</pubDate>
+      
+      <guid>https://midhuntp.github.io/tags/virtual-environment/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>virtualenvwrapper</title>
+      <link>https://midhuntp.github.io/tags/virtualenvwrapper/</link>
+      <pubDate>Sat, 11 Apr 2020 13:43:43 +0530</pubDate>
+      
+      <guid>https://midhuntp.github.io/tags/virtualenvwrapper/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
