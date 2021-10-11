@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Kubernetes Cluster set up  | CloudBuff</title>
+<meta name="keywords" content="" />
+<meta name="description" content="Setting up Kubernets cluster A Three node cluster is going to set up and all machies are having Ubuntu 20.04 Installed and Updated
+ Prerequisites : VM with atleast 2GB of RAM and Ubuntu Ubuntu 20.04
+ Note : the following steps need to carried out in master and worker nodes
+ The following applications needs to be installed
+ vim git curl wget apt-transport-https docker  Make sure sure system repositories and apps are updated">
+<meta name="author" content="">
+<link rel="canonical" href="https://midhuntp.github.io/posts/kubernetes/instalation/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.35cd0f65a15cafa92372b8313deef5960aae04b90ad722f2bbf509eb0468137e.css" integrity="sha256-Nc0PZaFcr6kjcrgxPe71lgquBLkK1yLyu/UJ6wRoE34=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://midhuntp.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://midhuntp.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://midhuntp.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://midhuntp.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://midhuntp.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.83.1" />
+<meta property="og:title" content="Kubernetes Cluster set up " />
+<meta property="og:description" content="Setting up Kubernets cluster A Three node cluster is going to set up and all machies are having Ubuntu 20.04 Installed and Updated
+ Prerequisites : VM with atleast 2GB of RAM and Ubuntu Ubuntu 20.04
+ Note : the following steps need to carried out in master and worker nodes
+ The following applications needs to be installed
+ vim git curl wget apt-transport-https docker  Make sure sure system repositories and apps are updated" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://midhuntp.github.io/posts/kubernetes/instalation/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-15T10:20:06&#43;05:30" />
+<meta property="article:modified_time" content="2021-05-15T10:20:06&#43;05:30" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Kubernetes Cluster set up "/>
+<meta name="twitter:description" content="Setting up Kubernets cluster A Three node cluster is going to set up and all machies are having Ubuntu 20.04 Installed and Updated
+ Prerequisites : VM with atleast 2GB of RAM and Ubuntu Ubuntu 20.04
+ Note : the following steps need to carried out in master and worker nodes
+ The following applications needs to be installed
+ vim git curl wget apt-transport-https docker  Make sure sure system repositories and apps are updated"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://midhuntp.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Kubernetes Cluster set up ",
+      "item": "https://midhuntp.github.io/posts/kubernetes/instalation/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Kubernetes Cluster set up ",
+  "name": "Kubernetes Cluster set up ",
+  "description": "Setting up Kubernets cluster A Three node cluster is going to set up and all machies are having Ubuntu 20.04 Installed and Updated\n Prerequisites : VM with atleast 2GB of RAM and Ubuntu Ubuntu 20.04\n Note : the following steps need to carried out in master and worker nodes\n The following applications needs to be installed\n vim git curl wget apt-transport-https docker  Make sure sure system repositories and apps are updated",
+  "keywords": [
+    
+  ],
+  "articleBody": "Setting up Kubernets cluster A Three node cluster is going to set up and all machies are having Ubuntu 20.04 Installed and Updated\n Prerequisites : VM with atleast 2GB of RAM and Ubuntu Ubuntu 20.04\n Note : the following steps need to carried out in master and worker nodes\n The following applications needs to be installed\n vim git curl wget apt-transport-https docker  Make sure sure system repositories and apps are updated\nsudo apt update sudo apt upgrade -y sudo apt install apt-transport-https vim git curl wget gnupg2 software-properties-common ca-certificates -y and restart your machine\nInstall Docker - as container run time\n# Install Docker  # Add docker repository curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - sudo add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs)stable\" #install docker  sudo apt update sudo apt install containerd.io docker-ce docker-ce-cli -y # Configure docker essentials  sudo mkdir -p /etc/systemd/system/docker.service.d sudo tee /etc/docker/daemon.json { \"exec-opts\": [\"native.cgroupdriver=systemd\"], \"log-driver\": \"json-file\", \"log-opts\": { \"max-size\": \"100m\" }, \"storage-driver\": \"overlay2\" } EOF # Add user to docker group sudo groupadd docker sudo usermod -aG docker $USER # Start and enable Services sudo systemctl daemon-reload sudo systemctl restart docker sudo systemctl enable docker Disable swap - why ?\nsudo sed -i '/ swap / s/^\\(.*\\)$/#\\1/g' /etc/fstab sudo swapoff -a  Setting up master node Step 1 Adding Kubernetes official repo to your local curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - echo \"deb https://apt.kubernetes.io/ kubernetes-xenial main\" | sudo tee /etc/apt/sources.list.d/kubernetes.list Step 2 Install Kubernetss and components sudo apt update sudo apt install kubelet kubeadm kubectl -y Confirm the installation :\nkubectl version --client  midhun@master:~$ kubectl version –client Client Version: version.Info{Major:“1”, Minor:“22”, GitVersion:“v1.22.2”, GitCommit:“8b5a19147530eaac9476b0ab82980b4088bbc1b2”, GitTreeState:“clean”, BuildDate:“2021-09-15T21:38:50Z”, GoVersion:“go1.16.8”, Compiler:“gc”, Platform:“linux/amd64”}\n kubeadm version  midhun@master:~$ kubeadm version kubeadm version: \u0026version.Info{Major:“1”, Minor:“22”, GitVersion:“v1.22.2”, GitCommit:“8b5a19147530eaac9476b0ab82980b4088bbc1b2”, GitTreeState:“clean”, BuildDate:“2021-09-15T21:37:34Z”, GoVersion:“go1.16.8”, Compiler:“gc”, Platform:“linux/amd64”}\n Step 3 Install/load essential kernal modules a) br_netfilter\nsudo modprobe br_netfilter sudo sh -c 'echo \"br_netfilter\"  /etc/modules-load.d/br_netfilter.conf' This module is required to communication between Kubernetes pods across the cluster - Ref\nfor verifying this module is enabled tuse the command lsmod | grep br_netfilter , will get a sample value like\n midhun@master:~$ lsmod | grep br_netfilter br_netfilter 28672 0 bridge 172032 1 br_netfilter\n by seeing values like above , we can assure that module is installed\nb) overlay\nsudo modprobe overlay This module is n intended for enabling overlay file system\nc) br_netfilter\nsudo tee /etc/sysctl.d/kubernetes.confnet.bridge.bridge-nf-call-ip6tables = 1 net.bridge.bridge-nf-call-iptables = 1 net.ipv4.ip_forward = 1 EOF Kubernetes requires that packets traversing a network bridge are processed for filtering and for port forwarding. will be used by kubeadm - Ref\nStep 4 ",
+  "wordCount" : "423",
+  "inLanguage": "en",
+  "datePublished": "2021-05-15T10:20:06+05:30",
+  "dateModified": "2021-05-15T10:20:06+05:30",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://midhuntp.github.io/posts/kubernetes/instalation/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "CloudBuff",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://midhuntp.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: #1d1e20;
+                --entry: #2e2e33;
+                --primary: rgba(255, 255, 255, 0.84);
+                --secondary: rgba(255, 255, 255, 0.56);
+                --tertiary: rgba(255, 255, 255, 0.16);
+                --content: rgba(255, 255, 255, 0.74);
+                --hljs-bg: #2e2e33;
+                --code-bg: #37383e;
+                --border: #333;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://midhuntp.github.io/" accesskey="h" title="CloudBuff (Alt + H)">CloudBuff</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Kubernetes Cluster set up 
+    </h1>
+    <div class="post-meta">May 15, 2021
+</div>
+  </header> 
+  <div class="post-content"><h1 id="setting-up--kubernets-cluster">Setting up  Kubernets cluster<a hidden class="anchor" aria-hidden="true" href="#setting-up--kubernets-cluster">#</a></h1>
+<p>A  Three node cluster is going to set up and  all machies are having <code>Ubuntu 20.04</code> Installed and Updated</p>
+<hr>
+<h3 id="prerequisites-"><strong>Prerequisites</strong> :<a hidden class="anchor" aria-hidden="true" href="#prerequisites-">#</a></h3>
+<p>VM with atleast 2GB of RAM and Ubuntu Ubuntu 20.04</p>
+<blockquote>
+<p>Note :  the following steps need to carried out in  master and worker nodes</p>
+</blockquote>
+<p>The following applications needs to be installed</p>
+<ol>
+<li>vim</li>
+<li>git</li>
+<li>curl</li>
+<li>wget</li>
+<li>apt-transport-https</li>
+<li>docker</li>
+</ol>
+<p>Make sure sure system repositories and apps are updated</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt update
+sudo apt upgrade -y 
+sudo apt install apt-transport-https vim git curl wget  gnupg2 software-properties-common ca-certificates -y
+</code></pre></div><p>and restart your machine</p>
+<p><strong>Install Docker</strong>  - as container run time</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Install Docker </span>
+
+<span style="color:#75715e"># Add docker repository</span>
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository <span style="color:#e6db74">&#34;deb [arch=amd64] https://download.docker.com/linux/ubuntu </span><span style="color:#66d9ef">$(</span>lsb_release -cs<span style="color:#66d9ef">)</span><span style="color:#e6db74"> stable&#34;</span>
+
+<span style="color:#75715e">#install docker </span>
+sudo apt update
+sudo apt install  containerd.io docker-ce docker-ce-cli -y
+
+<span style="color:#75715e"># Configure docker essentials </span>
+sudo mkdir -p /etc/systemd/system/docker.service.d
+sudo tee /etc/docker/daemon.json <span style="color:#e6db74">&lt;&lt;EOF
+</span><span style="color:#e6db74">{
+</span><span style="color:#e6db74">  &#34;exec-opts&#34;: [&#34;native.cgroupdriver=systemd&#34;],
+</span><span style="color:#e6db74">  &#34;log-driver&#34;: &#34;json-file&#34;,
+</span><span style="color:#e6db74">  &#34;log-opts&#34;: {
+</span><span style="color:#e6db74">    &#34;max-size&#34;: &#34;100m&#34;
+</span><span style="color:#e6db74">  },
+</span><span style="color:#e6db74">  &#34;storage-driver&#34;: &#34;overlay2&#34;
+</span><span style="color:#e6db74">}
+</span><span style="color:#e6db74">EOF</span>
+
+<span style="color:#75715e"># Add user to docker group</span>
+sudo groupadd docker
+sudo usermod -aG docker $USER
+
+<span style="color:#75715e"># Start and enable Services</span>
+sudo systemctl daemon-reload 
+sudo systemctl restart docker
+sudo systemctl enable docker
+</code></pre></div><p><strong>Disable swap</strong> - <a href="https://serverfault.com/questions/881517/why-disable-swap-on-kubernetes">why ?</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo sed -i <span style="color:#e6db74">&#39;/ swap / s/^\(.*\)$/#\1/g&#39;</span> /etc/fstab
+sudo swapoff -a
+</code></pre></div><hr>
+<h3 id="setting-up-master-node">Setting up master node<a hidden class="anchor" aria-hidden="true" href="#setting-up-master-node">#</a></h3>
+<h2 id="step-1">Step 1<a hidden class="anchor" aria-hidden="true" href="#step-1">#</a></h2>
+<h4 id="adding--kubernetes-official-repo-to-your-local">Adding  Kubernetes official repo to your local<a hidden class="anchor" aria-hidden="true" href="#adding--kubernetes-official-repo-to-your-local">#</a></h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+echo <span style="color:#e6db74">&#34;deb https://apt.kubernetes.io/ kubernetes-xenial main&#34;</span> | sudo tee /etc/apt/sources.list.d/kubernetes.list
+</code></pre></div><h2 id="step-2">Step 2<a hidden class="anchor" aria-hidden="true" href="#step-2">#</a></h2>
+<h4 id="install-kubernetss-and-components">Install Kubernetss and components<a hidden class="anchor" aria-hidden="true" href="#install-kubernetss-and-components">#</a></h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt update
+sudo apt install kubelet kubeadm kubectl -y 
+</code></pre></div><p>Confirm the installation :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl version --client 
+</code></pre></div><blockquote>
+<p>midhun@master:~$ kubectl version &ndash;client
+Client Version: version.Info{Major:&ldquo;1&rdquo;, Minor:&ldquo;22&rdquo;, GitVersion:&ldquo;v1.22.2&rdquo;, GitCommit:&ldquo;8b5a19147530eaac9476b0ab82980b4088bbc1b2&rdquo;, 					GitTreeState:&ldquo;clean&rdquo;, BuildDate:&ldquo;2021-09-15T21:38:50Z&rdquo;, GoVersion:&ldquo;go1.16.8&rdquo;, Compiler:&ldquo;gc&rdquo;, Platform:&ldquo;linux/amd64&rdquo;}</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubeadm version
+</code></pre></div><blockquote>
+<p>midhun@master:~$ kubeadm version
+kubeadm version: &amp;version.Info{Major:&ldquo;1&rdquo;, Minor:&ldquo;22&rdquo;, GitVersion:&ldquo;v1.22.2&rdquo;, GitCommit:&ldquo;8b5a19147530eaac9476b0ab82980b4088bbc1b2&rdquo;, 	   					GitTreeState:&ldquo;clean&rdquo;, BuildDate:&ldquo;2021-09-15T21:37:34Z&rdquo;, GoVersion:&ldquo;go1.16.8&rdquo;, Compiler:&ldquo;gc&rdquo;, Platform:&ldquo;linux/amd64&rdquo;}</p>
+</blockquote>
+<h2 id="step-3">Step 3<a hidden class="anchor" aria-hidden="true" href="#step-3">#</a></h2>
+<h4 id="installload---essential-kernal-modules">Install/load   essential kernal modules<a hidden class="anchor" aria-hidden="true" href="#installload---essential-kernal-modules">#</a></h4>
+<p><strong>a) <code>br_netfilter</code></strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo modprobe br_netfilter
+sudo sh -c <span style="color:#e6db74">&#39;echo &#34;br_netfilter&#34; &gt; /etc/modules-load.d/br_netfilter.conf&#39;</span>
+</code></pre></div><p>This module is required to communication between Kubernetes pods   across the cluster   -   <a href="https://docs.oracle.com/en/operating-systems/olcne/1.1/start/netfilter.html#">Ref</a></p>
+<p>for verifying this module is enabled  tuse the command  <code>lsmod | grep br_netfilter</code> , will get a sample value like</p>
+<blockquote>
+<p>midhun@master:~$ lsmod | grep br_netfilter
+br_netfilter           28672  0
+bridge                172032  1 br_netfilter</p>
+</blockquote>
+<p>by seeing values like above , we can assure that module is  installed</p>
+<p><strong>b) <code>overlay</code></strong></p>
+<pre><code>sudo modprobe overlay
+</code></pre><p>This module is n  intended for  enabling overlay file system</p>
+<p><strong>c) <code>br_netfilter</code></strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo tee /etc/sysctl.d/kubernetes.conf<span style="color:#e6db74">&lt;&lt;EOF
+</span><span style="color:#e6db74">net.bridge.bridge-nf-call-ip6tables = 1
+</span><span style="color:#e6db74">net.bridge.bridge-nf-call-iptables = 1
+</span><span style="color:#e6db74">net.ipv4.ip_forward = 1
+</span><span style="color:#e6db74">EOF</span>
+</code></pre></div><p>Kubernetes requires that packets traversing a network bridge are   processed for filtering and for port forwarding.   will be used by <code>kubeadm</code>   - <a href="https://docs.oracle.com/en/operating-systems/olcne/1.1/start/network-bridge.html">Ref</a></p>
+<h2 id="step-4">Step 4<a hidden class="anchor" aria-hidden="true" href="#step-4">#</a></h2>
+
+
+  </div>
+  <footer class="post-footer">
+  </footer>
+</article>
+    </main>
+    <footer class="footer">
+    <span>&copy; 2021 <a href="https://midhuntp.github.io/">CloudBuff</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+    menu.onscroll = function () {
+        localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

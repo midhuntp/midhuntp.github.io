@@ -17,6 +17,19 @@
     </item>
     
     <item>
+      <title>Kubernetes Cluster set up </title>
+      <link>https://midhuntp.github.io/posts/kubernetes/instalation/</link>
+      <pubDate>Sat, 15 May 2021 10:20:06 +0530</pubDate>
+      
+      <guid>https://midhuntp.github.io/posts/kubernetes/instalation/</guid>
+      <description>Setting up Kubernets cluster A Three node cluster is going to set up and all machies are having Ubuntu 20.04 Installed and Updated
+ Prerequisites : VM with atleast 2GB of RAM and Ubuntu Ubuntu 20.04
+ Note : the following steps need to carried out in master and worker nodes
+ The following applications needs to be installed
+ vim git curl wget apt-transport-https docker  Make sure sure system repositories and apps are updated</description>
+    </item>
+    
+    <item>
       <title>Virtual Environment in Ubuntu</title>
       <link>https://midhuntp.github.io/posts/virtual-environment-in-ubuntu/</link>
       <pubDate>Sat, 11 Apr 2020 13:43:43 +0530</pubDate>
