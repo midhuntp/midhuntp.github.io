@@ -6,29 +6,7 @@
     <description>Recent content in Posts on Unsigned Int</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 04 Aug 2021 11:02:22 +0530</lastBuildDate><atom:link href="https://www.unsignedint.dev/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Generating  and using self signed certificates</title>
-      <link>https://www.unsignedint.dev/posts/devops/self-signed-ssl/</link>
-      <pubDate>Wed, 04 Aug 2021 11:02:22 +0530</pubDate>
-      
-      <guid>https://www.unsignedint.dev/posts/devops/self-signed-ssl/</guid>
-      <description>Generating and using self signed certificates </description>
-    </item>
-    
-    <item>
-      <title>Kubernetes Cluster set up </title>
-      <link>https://www.unsignedint.dev/posts/kubernetes/instalation/</link>
-      <pubDate>Sat, 15 May 2021 10:20:06 +0530</pubDate>
-      
-      <guid>https://www.unsignedint.dev/posts/kubernetes/instalation/</guid>
-      <description>Setting up Kubernets cluster A Three node cluster is going to set up and all machies are having Ubuntu 20.04 Installed and Updated
-Prerequisites : VM with atleast 2GB of RAM and Ubuntu Ubuntu 20.04
-2 GB is minimum else will get a message like
-error execution phase preflight: [preflight] Some fatal errors occurred: [ERROR Mem]: the system RAM (981 MB) is less than the minimum 1700 MB
-Note : the following steps need to carried out in master and worker nodes</description>
-    </item>
-    
+    <lastBuildDate>Sat, 11 Apr 2020 13:43:43 +0530</lastBuildDate><atom:link href="https://www.unsignedint.dev/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Virtual Environment in Ubuntu</title>
       <link>https://www.unsignedint.dev/posts/virtual-environment-in-ubuntu/</link>

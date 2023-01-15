@@ -2,22 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.unsignedint.dev/posts/devops/self-signed-ssl/</loc>
-    <lastmod>2021-08-04T11:02:22+05:30</lastmod>
-  </url><url>
-    <loc>https://www.unsignedint.dev/posts/</loc>
-    <lastmod>2021-08-04T11:02:22+05:30</lastmod>
-  </url><url>
-    <loc>https://www.unsignedint.dev/</loc>
-    <lastmod>2021-08-04T11:02:22+05:30</lastmod>
-  </url><url>
-    <loc>https://www.unsignedint.dev/posts/kubernetes/instalation/</loc>
-    <lastmod>2021-05-15T10:20:06+05:30</lastmod>
-  </url><url>
     <loc>https://www.unsignedint.dev/categories/python/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
   </url><url>
     <loc>https://www.unsignedint.dev/categories/</loc>
+    <lastmod>2020-04-11T13:43:43+05:30</lastmod>
+  </url><url>
+    <loc>https://www.unsignedint.dev/posts/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
   </url><url>
     <loc>https://www.unsignedint.dev/tags/python3/</loc>
@@ -27,6 +18,9 @@
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
   </url><url>
     <loc>https://www.unsignedint.dev/tags/ubuntu-18.04/</loc>
+    <lastmod>2020-04-11T13:43:43+05:30</lastmod>
+  </url><url>
+    <loc>https://www.unsignedint.dev/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
   </url><url>
     <loc>https://www.unsignedint.dev/tags/virtual-environment/</loc>
