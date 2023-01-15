@@ -2,40 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://midhuntp.github.io/</loc>
+    <loc>https://www.unsignedint.dev/posts/devops/self-signed-ssl/</loc>
     <lastmod>2021-08-04T11:02:22+05:30</lastmod>
   </url><url>
-    <loc>https://midhuntp.github.io/posts/devops/self-signed-ssl/</loc>
+    <loc>https://www.unsignedint.dev/posts/</loc>
     <lastmod>2021-08-04T11:02:22+05:30</lastmod>
   </url><url>
-    <loc>https://midhuntp.github.io/posts/</loc>
+    <loc>https://www.unsignedint.dev/</loc>
     <lastmod>2021-08-04T11:02:22+05:30</lastmod>
   </url><url>
-    <loc>https://midhuntp.github.io/posts/kubernetes/instalation/</loc>
+    <loc>https://www.unsignedint.dev/posts/kubernetes/instalation/</loc>
     <lastmod>2021-05-15T10:20:06+05:30</lastmod>
   </url><url>
-    <loc>https://midhuntp.github.io/categories/</loc>
+    <loc>https://www.unsignedint.dev/categories/python/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
   </url><url>
-    <loc>https://midhuntp.github.io/tags/python3/</loc>
+    <loc>https://www.unsignedint.dev/categories/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
   </url><url>
-    <loc>https://midhuntp.github.io/tags/</loc>
+    <loc>https://www.unsignedint.dev/tags/python3/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
   </url><url>
-    <loc>https://midhuntp.github.io/tags/ubuntu-18.04/</loc>
+    <loc>https://www.unsignedint.dev/tags/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
   </url><url>
-    <loc>https://midhuntp.github.io/tags/virtual-environment/</loc>
+    <loc>https://www.unsignedint.dev/tags/ubuntu-18.04/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
   </url><url>
-    <loc>https://midhuntp.github.io/posts/virtual-environment-in-ubuntu/</loc>
+    <loc>https://www.unsignedint.dev/tags/virtual-environment/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
   </url><url>
-    <loc>https://midhuntp.github.io/tags/virtualenvwrapper/</loc>
+    <loc>https://www.unsignedint.dev/posts/virtual-environment-in-ubuntu/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
   </url><url>
-    <loc>https://midhuntp.github.io/categories/python/</loc>
+    <loc>https://www.unsignedint.dev/tags/virtualenvwrapper/</loc>
     <lastmod>2020-04-11T13:43:43+05:30</lastmod>
   </url>
 </urlset>
